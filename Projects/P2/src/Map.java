@@ -53,9 +53,24 @@ public class Map{
 	}
 		
 	public boolean move(String name, Location loc, Type type) {
-		//update locations, components, and field
-		//use the setLocation method for the component to move it to the new location
-		return false;
+		if(type!=Type.PACMAN && type!=Type.GHOST){
+			return false;
+		}
+		if(!field.get(loc).contains(Type.EMPTY) && !field.get(loc).contains(Type.COOKIE)){
+			return false;
+		}
+		if(locations.containsKey(name)){
+			Location oldLoc = locations.get(name);
+			locations.put(name,loc);
+			components.get(name).setLocation(loc.x, loc.y);
+			field.put(oldLoc,emptySet);
+			HashSet<Type> newSet = new HashSet<Type>();
+			newSet.add(type);
+			field.put(loc,newSet);
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
