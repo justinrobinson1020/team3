@@ -17,6 +17,13 @@ public class Ghost{
 	}
 
 	public boolean move() {
+		Array<Location> validMoves = get_valid_moves().toArray();
+		if (validMoves.length > 0) {
+			/* If a valid move exists, the ghost will move in the first valid direction 
+			returned by get_valid_moves() */
+			myLoc.shift(validMoves[0].x - myLoc.x, validMoves[0].y - myLoc.y);
+			return true;
+		}
 		return false;
 	}
 
