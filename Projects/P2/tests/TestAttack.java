@@ -10,7 +10,7 @@ public class TestAttack extends TestCase {
 	    Location loc2 = new Location(3,1);
 	    Ghost g = fr.addGhost(loc1, "ghost", Color.PURPLE);
 	    Pacman pm = fr.addPacMan(loc2);
-	    assertTrue(ghost.attack() != null);
+	    assertTrue(ghost.attack());
 // 		return null;	
 	}
 }
