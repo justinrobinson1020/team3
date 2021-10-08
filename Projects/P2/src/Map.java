@@ -60,13 +60,7 @@ public class Map{
 	
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		switch (field[loc]) {
-			case Map.Type.PACMAN: return Map.Type.PACMAN;
-			case Map.Type.GHOST: return Map.Type.GHOST;
-			case Map.Type.WALL: return wallSet;
-			case Map.Type.COOKIE: return Map.Type.COOKIE;
-			default: return emptySet;
-		}
+		return field.get(loc);
 	}
 
 	public boolean attack(String Name) {
