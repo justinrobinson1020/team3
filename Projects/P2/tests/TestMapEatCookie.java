@@ -9,7 +9,7 @@ public class TestMapEatCookie {
 			NoFrame fr = new NoFrame();
 			Location loc = new Location(0,1)
 			PacMan pm = fr.addPacMan(loc); 
-			assertTrue(!(pm.consume()));
+			assertTrue((pm.consume(), null));
 		}
 		catch(Exception e){
 			assertTrue(1==4);
