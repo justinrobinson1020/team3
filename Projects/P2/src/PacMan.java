@@ -40,22 +40,10 @@ public class PacMan{
 	}
 
 	public boolean is_ghost_in_range() { 
-		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST) || 
-			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST) || 
-			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST)) {
-				return true;
-		}
 		return false;
 	}
 
 	public JComponent consume() { 
-	    HashSet<Map.Type> getloc = myMap.getLoc(myLoc);
-	    if(getloc != null && getloc.contains(Map.Type.COOKIE)) {
-	        return myMap.eatCookie(myName)
-	    }
  		return null;
 	}
 }
