@@ -1,7 +1,7 @@
 import java.awt.Color;
 import junit.framework.*;
 
-public class TestMapAttack {
+public class TestMapAttack extends TestCase {
 
 	public void testMapAttack() {
 		Location pacmanloc = new Location(9, 11);
@@ -15,6 +15,6 @@ public class TestMapAttack {
 		assertFalse(frame.getMap().attack("Non-Adjacent Ghost"));
 
 		Ghost adj_ghost = frame.addGhost(adj_ghostloc, "Adjacent Ghost", Color.blue);
-		assertTrue(frame.getMap().attack("Adjacent Ghost"))	
+		assertTrue(frame.getMap().attack("Adjacent Ghost"));
 	}
 }

@@ -64,12 +64,19 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
-		if (components.get(Name).attack()) { // If the attack is possible
+		// get location of ghost
+		Location ghostLoc = locations.get(Name);
+
+		// If ghost can attack, set gameOver to true
+		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PacMan) || 
+			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PacMan) || 
+			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.PacMan)) {
 			gameOver=true;
 			return true;
 		}
-		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
