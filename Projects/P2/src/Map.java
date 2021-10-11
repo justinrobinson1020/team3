@@ -65,6 +65,10 @@ public class Map{
 
 	public boolean attack(String Name) {
 		//update gameOver
+		if (components.get(Name).attack()) { // If the attack is possible
+			gameOver=true;
+			return true;
+		}
 		return false;
 	}
 	
