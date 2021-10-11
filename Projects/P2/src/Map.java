@@ -53,9 +53,24 @@ public class Map{
 	}
 		
 	public boolean move(String name, Location loc, Type type) {
-		//update locations, components, and field
-		//use the setLocation method for the component to move it to the new location
-		return false;
+		if(type!=Type.PACMAN && type!=Type.GHOST){
+			return false;
+		}
+		if(!field.get(loc).contains(Type.EMPTY) && !field.get(loc).contains(Type.COOKIE)){
+			return false;
+		}
+		if(locations.containsKey(name)){
+			Location oldLoc = locations.get(name);
+			locations.put(name,loc);
+			components.get(name).setLocation(loc.x, loc.y);
+			field.put(oldLoc,emptySet);
+			HashSet<Type> newSet = new HashSet<Type>();
+			newSet.add(type);
+			field.put(loc,newSet);
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
@@ -64,32 +79,13 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		// get location of ghost
-		Location ghostLoc = locations.get(Name);
-
-		// If ghost can attack, set gameOver to true
-		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PacMan) || 
-			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PacMan) || 
-			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.PacMan)) {
-			gameOver=true;
-			return true;
-		}
+		//update gameOver
+		return false;
 	}
 	
 	public JComponent eatCookie(String name) {
-		Location currLoc = locations.get(name); 
-		String currCookieName = "tok_x" + currLoc.x + "_y" + currLoc.y;
-		if (locations.containsKey(currCookieName) && components.containsKey(currCookieName)) {
-			cookies++;
-			locations.remove(currCookieName);
-			JComponent out = components.get(currCookieName);
-			components.remove(currCookieName);
-			field.get(currLoc).remove(Map.Type.COOKIE);
-			return out;
-		}
+		//update locations, components, field, and cookies
+		//the id for a cookie at (10, 1) is tok_x10_y1
 		return null;
 	}
 }
