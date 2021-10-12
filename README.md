@@ -8,6 +8,7 @@ To compile and run the game, use the following commands:
 javac -cp "src/" src/*.java
 java -cp "src/" StartMenu
 ```
+![Pacman Game Running Screenshot](./Projects/P2/src/assets/gamerunning.png)
 
 ## PacMan
 
