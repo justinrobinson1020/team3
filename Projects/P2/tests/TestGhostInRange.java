@@ -16,7 +16,7 @@ public class TestGhostInRange extends TestCase {
 		assertFalse(nonadj_ghost.is_pacman_in_range());
 
 		Ghost adj_ghost = frame.addGhost(adj_ghostloc, "Adjacent Ghost", Color.blue);
-		assertTrue(adj_ghost.is_ghost_in_range())
+		assertTrue(adj_ghost.is_ghost_in_range());
 	}
 }
 
