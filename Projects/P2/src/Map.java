@@ -83,15 +83,17 @@ public class Map{
 		Location ghostLoc = locations.get(Name);
 
 		// If ghost can attack, set gameOver to true
-		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PacMan) || 
-			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PacMan) || 
-			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PacMan) ||
-			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.PacMan)) {
-			gameOver=true;
+		if (this.getLoc(ghostLoc.shift(1, 0)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(0, 1)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(1, 1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-1, -1)).contains(Map.Type.PACMAN)) {
+			gameOver = true;
 			return true;
 		}
+
+		return false;
 	}
 	
 	public JComponent eatCookie(String name) {

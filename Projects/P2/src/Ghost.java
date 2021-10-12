@@ -24,9 +24,11 @@ public class Ghost{
 		locations.add(new Location(x+1,y-1));
 		locations.add(new Location(x+1,y));
 		locations.add(new Location(x+1,y+1));
-		for(Location loc : locations){
-			if(myMap.getLoc(loc).contains(Map.Type.WALL)){
-				locations.remove(loc);
+
+		for(int i = 0; i < locations.size(); i++) {
+			if(myMap.getLoc(locations.get(i)).contains(Map.Type.WALL)){
+				locations.remove(i);
+				i--;
 			}
 		}
 
@@ -58,7 +60,7 @@ public class Ghost{
 
 	public boolean attack() {
 		if (is_pacman_in_range() == true) {
-		    return myMap.attack(myName)
+		    return myMap.attack(myName);
 		}
 		return false;
 	}
