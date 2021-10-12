@@ -79,13 +79,32 @@ public class Map{
 	}
 
 	public boolean attack(String Name) {
-		//update gameOver
-		return false;
+		// get location of ghost
+		Location ghostLoc = locations.get(Name);
+
+		// If ghost can attack, set gameOver to true
+		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.PacMan) || 
+			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.PacMan) || 
+			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.PacMan) ||
+			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.PacMan)) {
+			gameOver=true;
+			return true;
+		}
 	}
 	
 	public JComponent eatCookie(String name) {
-		//update locations, components, field, and cookies
-		//the id for a cookie at (10, 1) is tok_x10_y1
+		Location currLoc = locations.get(name); 
+		String currCookieName = "tok_x" + currLoc.x + "_y" + currLoc.y;
+		if (locations.containsKey(currCookieName) && components.containsKey(currCookieName)) {
+			cookies++;
+			locations.remove(currCookieName);
+			JComponent out = components.get(currCookieName);
+			components.remove(currCookieName);
+			field.get(currLoc).remove(Map.Type.COOKIE);
+			return out;
+		}
 		return null;
 	}
 }
