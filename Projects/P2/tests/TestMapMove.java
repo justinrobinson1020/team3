@@ -4,17 +4,17 @@ import java.io.*;
 
 public class TestMapMove extends TestCase{
 
-	public void testMapMove() {
+	public void testMapMove() throws FileNotFoundException {
 		// Creating Map
-		MainFrame frame = new MainFrame(); 
+		NoFrame frame = new NoFrame(); 
 
 		// Adding Pacman and Ghost
-		frame.getMap().add("Pacman", new Location(0,0),null,Type.PACMAN);
-		frame.getMap().add("Ghost", new Location(1,1),null,Type.GHOST);
-		frame.getMap().add("Wall", new Location(2,2),null,Type.WALL);
+		frame.getMap().add("Pacman", new Location(0,0),null,Map.Type.PACMAN);
+		frame.getMap().add("Ghost", new Location(1,1),null,Map.Type.GHOST);
+		frame.getMap().add("Wall", new Location(2,2),null,Map.Type.WALL);
 
-		assertTrue(frame.getMap().move("Pacman",new Location(3, 3), Type.PACMAN));
-		assertTrue(frame.getMap().move("Ghost",new Location(2, 3), Type.GHOST));
-		assertFalse(frame.getMap().move("Wall",new Location(4, 3), Type.WALL));
+		assertTrue(frame.getMap().move("Pacman",new Location(3, 3), Map.Type.PACMAN));
+		assertTrue(frame.getMap().move("Ghost",new Location(2, 3), Map.Type.GHOST));
+		assertFalse(frame.getMap().move("Wall",new Location(4, 3), Map.Type.WALL));
 	}
 }

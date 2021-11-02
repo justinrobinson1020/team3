@@ -10,11 +10,11 @@ public class TestPacManValidMoves extends TestCase {
 
 		// Creating Players
 		PacMan pacman = frame.addPacMan(new Location(0, 0));
-		frame.getMap().add("Pacman", new Location(0,0),null,Type.PACMAN);
+		frame.getMap().add("Pacman", new Location(0,0),null,Map.Type.PACMAN);
 		
 		// Test that locations produced by get_valid_moves are actually movable. 
 		for(Location x : pacman.get_valid_moves()){
-			assertTrue(frame.getMap().move("Pacman",x,Type.PACMAN));
+			assertTrue(frame.getMap().move("Pacman",x,Map.Type.PACMAN));
 		}
 		
 	}

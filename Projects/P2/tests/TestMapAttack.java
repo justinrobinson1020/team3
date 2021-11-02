@@ -1,9 +1,11 @@
 import java.awt.Color;
+import java.io.FileNotFoundException;
+
 import junit.framework.*;
 
 public class TestMapAttack extends TestCase {
 
-	public void testMapAttack() {
+	public void testMapAttack() throws FileNotFoundException {
 		Location pacmanloc = new Location(9, 11);
 		Location adj_ghostloc = new Location(9, 12);
 		Location nonadj_ghostloc = new Location(11, 12);

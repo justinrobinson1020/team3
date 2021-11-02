@@ -5,15 +5,15 @@ import java.io.*;
 public class TestGhostValidMoves extends TestCase {
 
 	public void testGhostValidMoves() throws FileNotFoundException{
-		MainFrame frame = new MainFrame(); 
+		NoFrame frame = new NoFrame();
 
 		// Creating Players
-		Ghost ghost = frame.addGhost(new Location(0, 0));
-		frame.getMap().add("Ghost", new Location(0,0),null,Type.GHOST);
+		Ghost ghost = frame.addGhost(new Location(0, 0), "ghost", Color.blue);
+		frame.getMap().add("Ghost", new Location(0,0), null, Map.Type.GHOST);
 		
 		// Test that locations produced by get_valid_moves are actually movable. 
 		for(Location x : ghost.get_valid_moves()){
-			assertTrue(frame.getMap().move("Ghost",x,Type.GHOST));
+			assertTrue(frame.getMap().move("Ghost", x, Map.Type.GHOST));
 		}
 	}
 }
