@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import java.util.*;
 
 public class PacMan{
 	String myName;
@@ -34,15 +35,15 @@ public class PacMan{
 			}
 		}
 
-		return locations;	
+		return locations;
 	}
 
 	public boolean move() {
-		ArrayList<Location> validMoves = get_valid_moves();
-		if (validMoves.size() > 0) {
-			/* If a valid move exists, PacMan will move in the first valid direction 
-			returned by get_valid_moves() */
-			myLoc.shift(validMoves.get(0).x - myLoc.x, validMoves.get(0).y - myLoc.y);
+		Random rand = new Random();
+		ArrayList<Location> valid_moves = this.get_valid_moves();
+		if (valid_moves.size() != 0) {
+			myLoc = valid_moves.get(rand.nextInt(valid_moves.size()));
+			myMap.move(myName, myLoc, Map.Type.PACMAN);
 			return true;
 		}
 		return false;
@@ -54,7 +55,9 @@ public class PacMan{
 			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.GHOST) ||
 			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST) ||
 			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST)) {
+			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(1, -1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(-1, 1)).contains(Map.Type.GHOST)) {
 				return true;
 		}
 		return false;

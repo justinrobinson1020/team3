@@ -56,26 +56,21 @@ public class Map{
 		if(type!=Type.PACMAN && type!=Type.GHOST){
 			return false;
 		}
-		if(!field.get(loc).contains(Type.EMPTY) && !field.get(loc).contains(Type.COOKIE)){
-			return false;
-		}
-		if(locations.containsKey(name)){
+		if(field.get(loc) != null && (field.get(loc).contains(Type.EMPTY) || field.get(loc).contains(Type.COOKIE))){
 			Location oldLoc = locations.get(name);
 			locations.put(name,loc);
 			components.get(name).setLocation(loc.x, loc.y);
-			field.put(oldLoc,emptySet);
-			HashSet<Type> newSet = new HashSet<Type>();
-			newSet.add(type);
-			field.put(loc,newSet);
+			field.get(oldLoc).remove(type);
+			field.get(loc).add(type);
 			return true;
-		}else{
-			return false;
 		}
+		return false;
 	}
 	
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
-		return field.get(loc);
+		HashSet<Type> comp = field.get(loc);
+		return comp == null ? emptySet : comp;
 	}
 
 	public boolean attack(String Name) {
@@ -88,7 +83,9 @@ public class Map{
 			this.getLoc(ghostLoc.shift(1, 1)).contains(Map.Type.PACMAN) ||
 			this.getLoc(ghostLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
 			this.getLoc(ghostLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-1, -1)).contains(Map.Type.PACMAN)) {
+			this.getLoc(ghostLoc.shift(-1, -1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(1, -1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-1, 1)).contains(Map.Type.PACMAN)) {
 			gameOver = true;
 			return true;
 		}
