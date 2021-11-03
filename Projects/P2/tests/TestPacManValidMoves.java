@@ -14,7 +14,8 @@ public class TestPacManValidMoves extends TestCase {
 		
 		// Test that locations produced by get_valid_moves are actually movable. 
 		for(Location x : pacman.get_valid_moves()){
-			assertTrue(frame.getMap().move("Pacman",x,Map.Type.PACMAN));
+			assertTrue(frame.getMap().getLoc(x).contains(Type.WALL)==False);
+
 		}
 		
 	}
