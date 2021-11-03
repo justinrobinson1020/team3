@@ -13,8 +13,8 @@ public class TestMapMove extends TestCase{
 		frame.getMap().add("Ghost", new Location(1,1),null,Map.Type.GHOST);
 		frame.getMap().add("Wall", new Location(2,2),null,Map.Type.WALL);
 
-		assertTrue(frame.getMap().move("Pacman",new Location(3, 3), Map.Type.PACMAN));
-		assertTrue(frame.getMap().move("Ghost",new Location(2, 3), Map.Type.GHOST));
+		assertTrue(frame.getMap().move("Pacman",new Location(0, 1), Map.Type.PACMAN));
+		assertTrue(frame.getMap().move("Ghost",new Location(2, 1), Map.Type.GHOST));
 		assertFalse(frame.getMap().move("Wall",new Location(4, 3), Map.Type.WALL));
 	}
 }
