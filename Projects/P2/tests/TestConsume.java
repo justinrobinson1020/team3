@@ -8,7 +8,7 @@ public class TestConsume extends TestCase {
 		NoFrame fr = new NoFrame();
 	    Location loc = new Location(1,1);
 	    PacMan pm = fr.addPacMan(loc);
-	    assertTrue(pm.consume() == null);
+	    assertTrue(pm.consume() != null);
 // 		return null;		
 	}
 }
