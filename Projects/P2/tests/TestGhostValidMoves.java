@@ -13,7 +13,7 @@ public class TestGhostValidMoves extends TestCase {
 		
 		// Test that locations produced by get_valid_moves are actually movable. 
 		for(Location x : ghost.get_valid_moves()){
-			assertTrue(frame.getMap().getLoc(x).contains(Type.WALL)==False);
+			assertTrue(frame.getMap().getLoc(x).contains(Map.Type.WALL)==false);
 
 		}
 	}
