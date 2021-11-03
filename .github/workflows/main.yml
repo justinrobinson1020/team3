@@ -22,8 +22,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: TestPacManInRange
         run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManInRange.java
-          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
+          javac -cp "Projects/P2/tests/junit-4.10.jar:src/:tests/" Projects/P2/src/*.java Projects/P2/tests/TestPacManInRange.java
+          java -Djava.awt.headless=true -cp "Projects/P2/tests/junit-4.10.jar:Projects/P2/src/:Projects/P2/tests/" org.junit.runner.JUnitCore TestPacManInRange
     
   TestGhostInRange:
     runs-on: ubuntu-latest
@@ -32,8 +32,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: TestGhostInRange
         run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostInRange.java
-          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
+          javac -cp "Projects/P2/tests/junit-4.10.jar:src/:tests/" Projects/P2/src/*.java Projects/P2/tests/TestGhostInRange.java
+          java -Djava.awt.headless=true -cp "Projects/P2/tests/junit-4.10.jar:Projects/P2/src/:Projects/P2/tests/" org.junit.runner.JUnitCore TestGhostInRange
 
   TestMapAttack:
     runs-on: ubuntu-latest
@@ -42,6 +42,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: TestMapAttack
         run: |
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapAttack.java
-          java -Djava.awt.headless=true -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack
-    
+          javac -cp "Projects/P2/tests/junit-4.10.jar:src/:tests/" Projects/P2/src/*.java Projects/P2/tests/TestMapAttack.java
+          java -Djava.awt.headless=true -cp "Projects/P2/tests/junit-4.10.jar:Projects/P2/src/:Projects/P2/tests/" org.junit.runner.JUnitCore TestMapAttack    
