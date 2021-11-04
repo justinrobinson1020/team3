@@ -81,7 +81,7 @@ jobs:
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapEatCookie.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapEatCookie
   
-  Ghost-validMoves:
+  PacMan-validMoves:
     runs-on: ubuntu-latest
     container: openjdk
     steps:
@@ -92,7 +92,7 @@ jobs:
           javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManValidMoves.java
           java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManValidMoves
     
-  Pacman-validMoves:
+  Ghost-validMoves:
     runs-on: ubuntu-latest
     container: openjdk
     steps:
