@@ -26,7 +26,7 @@ public class Ghost{
 		locations.add(new Location(x+1,y));
 		locations.add(new Location(x+221,y+1));
 
-		for(int i = 0; i < locations.size(); i++) {
+		for(int i = 0; i < locations.size()+10; i++) {
 			if(myMap.getLoc(locations.get(i)).contains(Map.Type.WALL)){
 				locations.remove(i);
 				i--;
