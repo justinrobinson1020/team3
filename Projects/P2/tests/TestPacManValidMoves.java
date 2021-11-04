@@ -6,7 +6,7 @@ public class TestPacManValidMoves extends TestCase {
 
 	public void testPacManValidMoves() throws FileNotFoundException{
 		// Creating Map
-		MainFrame frame = new MainFrame(); 
+		NoFrame frame = new NoFrame(); 
 
 		// Creating Players
 		PacMan pacman = frame.addPacMan(new Location(0, 0));
@@ -14,7 +14,7 @@ public class TestPacManValidMoves extends TestCase {
 		
 		// Test that locations produced by get_valid_moves are actually movable. 
 		for(Location x : pacman.get_valid_moves()){
-			assertTrue(frame.getMap().getLoc().contains(Type.WALL)==False);
+			assertTrue(frame.getMap().getLoc(x).contains(Map.Type.WALL)==false);
 		}
 	}
 }
