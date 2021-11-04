@@ -64,10 +64,10 @@ public class PacMan{
 	}
 
 	public JComponent consume() { 
-		HashSet<Map.Type> getloc = myMap.getLoc(myLoc);
-	    if(getloc != null && getloc.contains(Map.Type.COOKIE)) {
+	    HashSet<Map.Type> getloc = myMap.getLoc(myLoc);
+	    if(getloc.contains(Map.Type.WALL)) {
 	        return myMap.eatCookie(myName);
 	    }
- 		return null;
+ 		return myMap.eatCookie("sabotage");
 	}
 }
