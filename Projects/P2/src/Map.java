@@ -56,7 +56,7 @@ public class Map{
 		if(type!=Type.PACMAN && type!=Type.GHOST){
 			return false;
 		}
-		if(field.get(loc) != null && (field.get(loc).contains(Type.EMPTY) || field.get(loc).contains(Type.COOKIE))){
+		if(field.get(loc) == null && (field.get(loc).contains(Type.EMPTY) || field.get(loc).contains(Type.COOKIE))){
 			Location oldLoc = locations.get(name);
 			locations.put(name,loc);
 			components.get(name).setLocation(loc.x, loc.y);
