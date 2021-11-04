@@ -1,0 +1,18 @@
+name: CI
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  # Sanity Check + Compile Files
+  build:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sanity Check & Compile Files
+        run: |
+          echo Hello World
+          java -version
+          javac -version
+          javac -cp "Projects/P2/src/" Projects/P2/src/*.java
+  
