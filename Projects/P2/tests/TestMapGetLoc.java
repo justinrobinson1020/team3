@@ -12,12 +12,12 @@ public class TestMapGetLoc extends TestCase {
 
 		// Creating Players
 		PacMan pacman = frame.addPacMan(new Location(0, 0)); // Creates PacMan at location x, y
-		Ghost ghost = frame.addGhost(new Location(1, 1), "name", Color.red); // Creates a red ghost named "name" at location x, y
+		Ghost ghost = frame.addGhost(new Location(0, 0), "name", Color.red); // Creates a red ghost named "name" at location x, y
 
 		HashSet<Map.Type> playersSet = new HashSet<Map.Type>();
 		playersSet.add(Map.Type.PACMAN);
 		playersSet.add(Map.Type.GHOST);
 
-		assertEquals(playersSet, frame.getMap().getLoc(new Location (0,0)));
+		assertTrue(frame.getMap().getLoc(new Location (0,0)).containsAll(playersSet));
 	}
 }
