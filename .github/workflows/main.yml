@@ -15,38 +15,39 @@ jobs:
           java -version
           javac -version
           javac -cp "Projects/P2/src/" Projects/P2/src/*.java
-  Ghost-PacManInRange:
-    runs-on: ubuntu-latest
-    container: openjdk
-    steps:
-      - uses: actions/checkout@v2
-      - name: TestPacManInRange
-        run: |
-          cd Projects/P2
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManInRange.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManInRange
-    
-  Pacman-GhostInRange:
-    runs-on: ubuntu-latest
-    container: openjdk
-    steps:
-      - uses: actions/checkout@v2
-      - name: TestGhostInRange
-        run: |
-          cd Projects/P2
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostInRange.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostInRange
 
-  Map-Attack:
+  PacMan-Move:
     runs-on: ubuntu-latest
     container: openjdk
     steps:
       - uses: actions/checkout@v2
-      - name: TestMapAttack
+      - name: TestPacManMove
         run: |
           cd Projects/P2
-          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapAttack.java
-          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapAttack   
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestPacManMove.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestPacManMove
+
+  Ghost-Move:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: TestGhostMove
+        run: |
+          cd Projects/P2
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestGhostMove.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestGhostMove
+
+  Map-GetLoc:
+    runs-on: ubuntu-latest
+    container: openjdk
+    steps:
+      - uses: actions/checkout@v2
+      - name: TestMapGetLoc
+        run: |
+          cd Projects/P2
+          javac -cp "tests/junit-4.10.jar:src/:tests/" src/*.java tests/TestMapGetLoc.java
+          java -cp "tests/junit-4.10.jar:src/:tests/" org.junit.runner.JUnitCore TestMapGetLoc 
 
   Ghost-Attack:
     runs-on: ubuntu-latest
