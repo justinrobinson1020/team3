@@ -6,7 +6,7 @@ public class TestPacManValidMoves extends TestCase {
 
 	public void testPacManValidMoves() throws FileNotFoundException{
 		// Creating Map
-		MainFrame frame = new MainFrame(); 
+		NoFrame frame = new NoFrame(); 
 
 		// Creating Players
 		PacMan pacman = frame.addPacMan(new Location(0, 0));
