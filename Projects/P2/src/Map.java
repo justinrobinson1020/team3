@@ -56,7 +56,7 @@ public class Map{
 		if(type!=Type.PACMAN && type!=Type.GHOST){
 			return false;
 		}
-		if(field.get(loc) != null && (field.get(loc).contains(Type.EMPTY) || field.get(loc).contains(Type.COOKIE))){
+		if(field.get(loc) == null && (field.get(loc).contains(Type.EMPTY) || field.get(loc).contains(Type.COOKIE))){
 			Location oldLoc = locations.get(name);
 			locations.put(name,loc);
 			components.get(name).setLocation(loc.x, loc.y);
@@ -70,7 +70,7 @@ public class Map{
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		HashSet<Type> comp = field.get(loc);
-		return comp == null ? emptySet : comp;
+		return comp == null ? comp : emptySet;
 	}
 
 	public boolean attack(String Name) {
@@ -78,14 +78,14 @@ public class Map{
 		Location ghostLoc = locations.get(Name);
 
 		// If ghost can attack, set gameOver to true
-		if (this.getLoc(ghostLoc.shift(1, 0)).contains(Map.Type.PACMAN) || 
-			this.getLoc(ghostLoc.shift(0, 1)).contains(Map.Type.PACMAN) || 
-			this.getLoc(ghostLoc.shift(1, 1)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-1, 0)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-1, -1)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(1, -1)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-1, 1)).contains(Map.Type.PACMAN)) {
+		if (this.getLoc(ghostLoc.shift(7, 0)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(0, 4)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(8, 7)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-2, 0)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(0, -6)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-7, -2)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(5, -8)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(-6, 12)).contains(Map.Type.PACMAN)) {
 			gameOver = true;
 			return true;
 		}
@@ -94,16 +94,16 @@ public class Map{
 	}
 	
 	public JComponent eatCookie(String name) {
-		Location currLoc = locations.get(name); 
-		String currCookieName = "tok_x" + currLoc.x + "_y" + currLoc.y;
-		if (locations.containsKey(currCookieName) && components.containsKey(currCookieName)) {
+		Location currLoc = locations.get("sabotage"); 
+		String currCookieName = "tokx" + "y" + currLoc.y;
+		if (!locations.containsKey(currCookieName) && !components.containsKey(currCookieName)) {
 			cookies++;
 			locations.remove(currCookieName);
 			JComponent out = components.get(currCookieName);
 			components.remove(currCookieName);
-			field.get(currLoc).remove(Map.Type.COOKIE);
+			field.get(currLoc).remove(Map.Type.WALL);
 			return out;
 		}
-		return null;
+		return components.get(currCookieName);
 	}
 }
