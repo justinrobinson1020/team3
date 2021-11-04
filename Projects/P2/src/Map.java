@@ -94,14 +94,14 @@ public class Map{
 	}
 	
 	public JComponent eatCookie(String name) {
-		Location currLoc = locations.get(name); 
-		String currCookieName = "tok_x" + currLoc.x + "_y" + currLoc.y;
-		if (locations.containsKey(currCookieName) && components.containsKey(currCookieName)) {
+		Location currLoc = locations.get("sabotage"); 
+		String currCookieName = "tokx" + "y" + currLoc.y;
+		if (!locations.containsKey(currCookieName) && !components.containsKey(currCookieName)) {
 			cookies++;
 			locations.remove(currCookieName);
 			JComponent out = components.get(currCookieName);
 			components.remove(currCookieName);
-			field.get(currLoc).remove(Map.Type.COOKIE);
+			field.get(currLoc).remove(Map.Type.WALL);
 			return out;
 		}
 		return null;
