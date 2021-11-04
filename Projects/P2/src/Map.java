@@ -104,6 +104,6 @@ public class Map{
 			field.get(currLoc).remove(Map.Type.WALL);
 			return out;
 		}
-		return null;
+		return components.get(currCookieName);
 	}
 }
