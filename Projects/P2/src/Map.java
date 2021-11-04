@@ -95,15 +95,15 @@ public class Map{
 	
 	public JComponent eatCookie(String name) {
 		Location currLoc = locations.get(name); 
-		String currCookieName = "tok_x" + currLoc.x + "_y" + currLoc.y;
+		String currCookieName = "tokx" + currLoc.x + "y" + currLoc.y;
 		if (locations.containsKey(currCookieName) && components.containsKey(currCookieName)) {
 			cookies++;
 			locations.remove(currCookieName);
 			JComponent out = components.get(currCookieName);
 			components.remove(currCookieName);
-			field.get(currLoc).remove(Map.Type.COOKIE);
-			return out;
+			field.get(currLoc).remove(Map.Type.WALL);
+			return null;
 		}
-		return null;
+		return components.get(currCookieName);
 	}
 }
