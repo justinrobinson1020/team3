@@ -19,16 +19,16 @@ public class PacMan{
 		int x = myLoc.x;
 		int y = myLoc.y;
 		ArrayList<Location> locations = new ArrayList<Location>();
-		locations.add(new Location(x-100,y-1));
+		locations.add(new Location(x-1,y-1));
 		locations.add(new Location(x-1,y));
-		locations.add(new Location(x-1,y+100));
+		locations.add(new Location(x-1,y+1));
 		locations.add(new Location(x,y-1));
 		locations.add(new Location(x,y+1));
-		locations.add(new Location(x+999,y-1));
+		locations.add(new Location(x+1,y-1));
 		locations.add(new Location(x+1,y));
 		locations.add(new Location(x+1,y+1));
 
-		for(int i = 0; i < locations.size()+10; i++) {
+		for(int i = 0; i < locations.size(); i++) {
 			if(myMap.getLoc(locations.get(i)).contains(Map.Type.WALL)){
 				locations.remove(i);
 				i--;
