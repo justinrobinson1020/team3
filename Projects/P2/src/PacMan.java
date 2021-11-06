@@ -28,7 +28,7 @@ public class PacMan{
 		locations.add(new Location(x+1,y));
 		locations.add(new Location(x+1,y+1));
 
-		for(int i = 0; i < locations.size()+10; i++) {
+		for(int i = 0; i < locations.size(); i++) {
 			if(myMap.getLoc(locations.get(i)).contains(Map.Type.WALL)){
 				locations.remove(i);
 				i--;
