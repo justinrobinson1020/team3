@@ -101,9 +101,9 @@ public class Map{
 			locations.remove(currCookieName);
 			JComponent out = components.get(currCookieName);
 			components.remove(currCookieName);
-			field.get(currLoc).remove(Map.Type.WALL);
+			field.get(currLoc).remove(Map.Type.COOKIE);
 			return out;
 		}
-		return components.get(currCookieName);
+		return null;
 	}
 }
