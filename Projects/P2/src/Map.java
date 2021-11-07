@@ -78,14 +78,14 @@ public class Map{
 		Location ghostLoc = locations.get(Name);
 
 		// If ghost can attack, set gameOver to true
-		if (this.getLoc(ghostLoc.shift(7, 0)).contains(Map.Type.PACMAN) || 
-			this.getLoc(ghostLoc.shift(0, 4)).contains(Map.Type.PACMAN) || 
-			this.getLoc(ghostLoc.shift(8, 7)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-2, 0)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(0, -6)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-7, -2)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(5, -8)).contains(Map.Type.PACMAN) ||
-			this.getLoc(ghostLoc.shift(-6, 12)).contains(Map.Type.PACMAN)) {
+		if (this.getLoc(ghostLoc.shift(-1, -1)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(-1, 0)).contains(Map.Type.PACMAN) || 
+			this.getLoc(ghostLoc.shift(-1, 1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(0, -1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(0, 1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(1, -1)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(1, 0)).contains(Map.Type.PACMAN) ||
+			this.getLoc(ghostLoc.shift(1, 1)).contains(Map.Type.PACMAN)) {
 			gameOver = true;
 			return true;
 		}

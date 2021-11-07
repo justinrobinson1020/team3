@@ -65,9 +65,9 @@ public class PacMan{
 
 	public JComponent consume() { 
 	    HashSet<Map.Type> getloc = myMap.getLoc(myLoc);
-	    if(getloc.contains(Map.Type.WALL)) {
+	    if(getloc.contains(Map.Type.COOKIE)) {
 	        return myMap.eatCookie(myName);
 	    }
- 		return myMap.eatCookie("sabotage");
+ 		return null;
 	}
 }
