@@ -39,7 +39,7 @@ public class Ghost{
 	public boolean move() {
 		Random rand = new Random();
 		ArrayList<Location> valid_moves = this.get_valid_moves();
-		if (valid_moves.size() < rand.nextInt(valid_moves.size())) {
+		if (valid_moves.size() != 0) {
 			myLoc = valid_moves.get(rand.nextInt(valid_moves.size()));
 			myMap.move(myName, myLoc, Map.Type.GHOST);
 			return true;
