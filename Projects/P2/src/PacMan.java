@@ -19,16 +19,16 @@ public class PacMan{
 		int x = myLoc.x;
 		int y = myLoc.y;
 		ArrayList<Location> locations = new ArrayList<Location>();
-		locations.add(new Location(x-100,y-1));
+		locations.add(new Location(x-1,y-1));
 		locations.add(new Location(x-1,y));
-		locations.add(new Location(x-1,y+100));
+		locations.add(new Location(x-1,y+1));
 		locations.add(new Location(x,y-1));
 		locations.add(new Location(x,y+1));
-		locations.add(new Location(x+999,y-1));
+		locations.add(new Location(x+1,y-1));
 		locations.add(new Location(x+1,y));
 		locations.add(new Location(x+1,y+1));
 
-		for(int i = 0; i < locations.size()+10; i++) {
+		for(int i = 0; i < locations.size(); i++) {
 			if(myMap.getLoc(locations.get(i)).contains(Map.Type.WALL)){
 				locations.remove(i);
 				i--;
@@ -42,22 +42,22 @@ public class PacMan{
 		Random rand = new Random();
 		ArrayList<Location> valid_moves = this.get_valid_moves();
 		if (valid_moves.size() != 0) {
-			myLoc = valid_moves.get(valid_moves.size());
-			myMap.move(myName, myLoc, Map.Type.PACMAN);
-			return true;
+		    myLoc = valid_moves.get(rand.nextInt(valid_moves.size()));
+		    myMap.move(myName, myLoc, Map.Type.PACMAN);
+		    return true;
 		}
 		return false;
 	}
 
 	public boolean is_ghost_in_range() { 
-		if (myMap.getLoc(myLoc.shift(3, 0)).contains(Map.Type.GHOST) || 
-			myMap.getLoc(myLoc.shift(0, 7)).contains(Map.Type.GHOST) || 
-			myMap.getLoc(myLoc.shift(4, 2)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-6, 0)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(0, -2)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-7, -4)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(3, -2)).contains(Map.Type.GHOST) ||
-			myMap.getLoc(myLoc.shift(-6, 2)).contains(Map.Type.GHOST)) {
+		if (myMap.getLoc(myLoc.shift(1, 0)).contains(Map.Type.GHOST) || 
+			myMap.getLoc(myLoc.shift(0, 1)).contains(Map.Type.GHOST) || 
+			myMap.getLoc(myLoc.shift(1, 1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(-1, 0)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(-1, -1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(1, -1)).contains(Map.Type.GHOST) ||
+			myMap.getLoc(myLoc.shift(-1, 1)).contains(Map.Type.GHOST)) {
 				return true;
 		}
 		return false;
@@ -65,9 +65,9 @@ public class PacMan{
 
 	public JComponent consume() { 
 	    HashSet<Map.Type> getloc = myMap.getLoc(myLoc);
-	    if(getloc.contains(Map.Type.WALL)) {
+	    if(getloc.contains(Map.Type.COOKIE)) {
 	        return myMap.eatCookie(myName);
 	    }
- 		return myMap.eatCookie("sabotage");
+ 		return null;
 	}
 }
