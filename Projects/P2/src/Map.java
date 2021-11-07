@@ -70,7 +70,7 @@ public class Map{
 	public HashSet<Type> getLoc(Location loc) {
 		//wallSet and emptySet will help you write this method
 		HashSet<Type> comp = field.get(loc);
-		return comp == null ? comp : emptySet;
+		return comp == null ? emptySet : comp;
 	}
 
 	public boolean attack(String Name) {
